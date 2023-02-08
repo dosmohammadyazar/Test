@@ -13,6 +13,7 @@ export default function HomeScreen({navigation}){
 
     useEffect(()=>{
         getApiData();
+        getUsers();
     },[]);
 
     const getApiData = () =>{
@@ -21,6 +22,16 @@ export default function HomeScreen({navigation}){
             setUserData(response.data.data);
         })
         .catch(function (error){
+            console.log(error);
+        });
+    }
+    const getUsers = () =>{
+        console.log('entered');
+        axios.get('http://localhost/new_laravel/public/api/check')
+        .then(function(response){
+            console.log(response);
+        })
+        .catch(function(error){
             console.log(error);
         });
     }
